@@ -7,11 +7,12 @@ export default class SearchBar extends Component {
     this.state = { term: '' };
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   render() {
     return (
-      <form className='input-group'>
+      <form className='input-group' onsubmit={this.handleFormSubmit}>
         <input
           placeholder='Search for your city!'
           className='form-control'
@@ -28,5 +29,9 @@ export default class SearchBar extends Component {
 
   handleInputChange(e) {
     this.setState({ term: e.target.value });
+  }
+
+  handleFormSubmit(e) {
+    e.preventDefault();
   }
 }
